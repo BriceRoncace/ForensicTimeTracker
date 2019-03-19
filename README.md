@@ -21,6 +21,10 @@ ForensicTimeTracker-2.0\target>java -jar ForensicTimeTracker-1.0.war
 
 4. Browse to http://localhost:8080/ForensicTimeTracker
 
+5. Log in with default in-memory user credentials (username and password "admin")
+
+6. Add (database) users
+
 
 ### Build Profiles
 
