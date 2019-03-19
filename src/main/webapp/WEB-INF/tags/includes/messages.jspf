@@ -1,0 +1,44 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<div class="row">
+  <div class="col-12">
+    <c:if test="${messages == null && paramValues.messages != null}">
+      <c:set var="messages" value="${paramValues.messages}"/>
+    </c:if>
+
+    <c:if test="${messages != null && !empty messages}">
+      <div class="alert alert-light alert-dismissible"><button type="button" class="close" data-dismiss="alert" title="close message(s)">&times;</button>
+        <c:choose>
+          <c:when test="${messages.getClass().name == 'java.lang.String'}">
+            ${messages}
+          </c:when>
+          <c:otherwise>
+            <c:forEach items="${messages}" var="message" varStatus="s">
+              ${message}${not s.last ? '<br/>' : ''}
+            </c:forEach>
+          </c:otherwise>
+        </c:choose>
+      </div> 
+    </c:if>
+
+    <c:if test="${errors == null && paramValues.errors != null}">
+      <c:set var="errors" value="${paramValues.errors}"/>
+    </c:if>
+
+    <c:if test="${errors != null && !empty errors}">
+      <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" title="close error(s)">&times;</button>
+        <c:choose>
+          <c:when test="${errors.getClass().name == 'java.lang.String'}">
+            ${errors}
+          </c:when>
+          <c:otherwise>
+            <c:forEach items="${errors}" var="error" varStatus="s">
+              ${error}${not s.last ? '<br/>' : ''}
+            </c:forEach>
+          </c:otherwise>
+        </c:choose>
+      </div>
+    </c:if>
+    
+  </div>
+</div>
