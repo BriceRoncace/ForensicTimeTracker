@@ -41,7 +41,7 @@ public class WorkdayServiceImpl implements WorkdayService {
     WorkdaySpec spec = new WorkdaySpec();
     spec.setWorkingDate(new CriteriaDate(workday.getWorkdayDate(), CriteriaDate.SearchType.BEFORE));
     spec.setUsername(workday.getUsername());
-    Page<Workday> page = workdayRepository.findAll(spec, PageRequest.of(0, 1, new Sort(Sort.Direction.DESC, "workdayDate")));
+    Page<Workday> page = workdayRepository.findAll(spec, PageRequest.of(0, 1, Sort.by(Sort.Direction.DESC, "workdayDate")));
     return Optional.ofNullable(page.hasContent() ? page.getContent().get(0) : null);
   }
 

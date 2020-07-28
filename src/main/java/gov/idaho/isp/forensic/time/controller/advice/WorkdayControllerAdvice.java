@@ -52,7 +52,7 @@ public class WorkdayControllerAdvice {
   }
 
   private Workday getExistingOrNewWorkday(WorkdaySpec spec) {
-    List<Workday> workdays = workdayRepository.findAll(spec, new Sort(Sort.Direction.DESC, "workdayDate"));
+    List<Workday> workdays = workdayRepository.findAll(spec, Sort.by(Sort.Direction.DESC, "workdayDate"));
     return workdays.isEmpty() ? newWorkdayForUser(spec.getUsername()) : workdays.get(0);
   }
 
